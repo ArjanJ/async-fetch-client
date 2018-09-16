@@ -1,6 +1,6 @@
 # Async Fetch Client
 
-Simple wrapper around isomorphic-fetch to help make API calls easier.
+Simple wrapper around isomorphic-fetch to help make API calls easier. This is a function I end up reusing in different projects, mostly tailored to my own use.
 
 ## Install
 
