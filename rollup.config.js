@@ -1,4 +1,3 @@
-const resolve = require('rollup-plugin-node-resolve');
 const babel = require('rollup-plugin-babel');
 
 export default [
@@ -9,21 +8,10 @@ export default [
       format: 'cjs',
     },
     plugins: [
-      resolve(),
       babel({
         babelrc: false,
-        presets: [
-          [
-            'env',
-            {
-              targets: {
-                browsers: ['ie 11', 'ios 7'],
-              },
-              modules: false,
-            },
-          ],
-          'flow',
-        ],
+        exclude: /node_modules/,
+        presets: ['@babel/env', '@babel/flow'],
       }),
     ],
   },

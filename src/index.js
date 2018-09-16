@@ -1,4 +1,5 @@
 // @flow
+import fetch from 'isomorphic-fetch';
 import Cookies from 'js-cookie';
 
 type Headers = {
@@ -8,7 +9,6 @@ type Headers = {
 };
 type Method = 'GET' | 'DELETE' | 'PUT' | 'POST';
 type ModuleOptions = {
-  basePath: string,
   body?: {},
   headers?: Object,
   includeCookies?: boolean,
@@ -22,14 +22,12 @@ type RequestOptions = {
   method: Method,
 };
 
-const BASE_PATH = '/api';
 const DEFAULT_HEADERS: Headers = {
   accept: 'application/json',
   'content-type': 'application/json',
 };
 
 const apiClient = async ({
-  basePath,
   body,
   headers,
   includeCookies,
@@ -50,10 +48,8 @@ const apiClient = async ({
   }
   if (typeof body === 'object') fetchOptions.body = JSON.stringify(body);
 
-  const fetchUrl = `${basePath || BASE_PATH}${url}`;
-
   try {
-    const response = await fetch(fetchUrl, fetchOptions);
+    const response = await fetch(url, fetchOptions);
     const json = await response.json();
     return { json };
   } catch (error) {
