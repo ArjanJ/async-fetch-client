@@ -42,7 +42,7 @@ const apiClient = async ({
   };
 
   // If running on server, then don't bother fetching cookies.
-  const SID = window !== undefined && Cookies.get('SID');
+  const SID: boolean | string = window !== undefined && Cookies.get('SID');
 
   if (includeCookies) fetchOptions.credentials = 'include';
   if (typeof SID === 'string') {
