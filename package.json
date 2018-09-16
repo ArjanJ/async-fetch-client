@@ -2,20 +2,42 @@
   "name": "async-fetch-client",
   "version": "1.0.0",
   "description": "Thin wrapper around Fetch API to make API calls, for client or server.",
-  "main": "lib/index.js",
+  "main": "lib/asyncFetchClient.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "npm run clear && rollup -c",
+    "clear": "rm -rf lib/*",
     "dev": "rollup -c -w",
     "test": "jest"
   },
   "author": "Arjan Jassal <arjan.jassal.27@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.81.0",
     "rollup": "^0.65.2",
-    "rollup-plugin-commonjs": "^9.1.6",
+    "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-node-resolve": "^3.4.0"
   },
   "files": [
     "lib"
-  ]
+  ],
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "flow"
+    ]
+  },
+  "dependencies": {
+    "js-cookie": "^2.2.0"
+  }
 }
