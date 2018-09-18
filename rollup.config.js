@@ -11,6 +11,7 @@ export default [
       babel({
         babelrc: false,
         exclude: /node_modules/,
+        plugins: ['@babel/transform-regenerator'],
         presets: ['@babel/env', '@babel/flow'],
       }),
     ],
