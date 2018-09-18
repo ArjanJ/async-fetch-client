@@ -11,8 +11,12 @@ export default [
       babel({
         babelrc: false,
         exclude: /node_modules/,
-        plugins: ['@babel/transform-regenerator'],
+        plugins: [
+          '@babel/transform-regenerator',
+          ['@babel/transform-runtime'],
+        ],
         presets: ['@babel/env', '@babel/flow'],
+        runtimeHelpers: true
       }),
     ],
   },

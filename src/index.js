@@ -50,10 +50,24 @@ const apiClient = async ({
 
   try {
     const response = await fetch(url, fetchOptions);
+    const contentType = response.headers.get('content-type');
+
+    /**
+     * This isn't that accessible, because it's up to the consumer to
+     * parse the non JSON response properly now.
+     */
+    if (contentType !== 'application/json') {
+      return response;
+    }
+
     const json = await response.json();
     return { json };
   } catch (error) {
-    return { error };
+    return {
+      details: error.toString(),
+      error: true,
+      message: `Failed to fetch resource at ${url}.`,
+    };
   }
 };
 
