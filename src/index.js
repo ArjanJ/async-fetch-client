@@ -7,7 +7,9 @@ type Headers = {
   authorization?: string,
   'content-type'?: string,
 };
+
 type Method = 'GET' | 'DELETE' | 'PUT' | 'POST';
+
 type ModuleOptions = {
   body?: {},
   headers?: Object,
@@ -15,6 +17,7 @@ type ModuleOptions = {
   method: Method,
   url: string,
 };
+
 type RequestOptions = {
   body?: string,
   credentials?: 'include',
@@ -26,6 +29,9 @@ const DEFAULT_HEADERS: Headers = {
   accept: 'application/json',
   'content-type': 'application/json',
 };
+
+const isBrowser =
+  typeof window !== 'undefined' && typeof window.document !== 'undefined';
 
 const apiClient = async ({
   body,
@@ -40,7 +46,7 @@ const apiClient = async ({
   };
 
   // If running on server, then don't bother fetching cookies.
-  const SID: boolean | string = window !== undefined && Cookies.get('SID');
+  const SID: boolean | string = isBrowser && Cookies.get('SID');
 
   if (includeCookies) fetchOptions.credentials = 'include';
   if (typeof SID === 'string') {
