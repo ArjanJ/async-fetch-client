@@ -62,7 +62,7 @@ const apiClient = async ({
      * This isn't that accessible, because it's up to the consumer to
      * parse the non JSON response properly now.
      */
-    if (contentType !== 'application/json') {
+    if (contentType.includes('application/json') === false) {
       return response;
     }
 

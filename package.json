@@ -1,6 +1,6 @@
 {
   "name": "async-fetch-client",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Thin wrapper around isomorphic-fetch to make API calls easier, for client or server.",
   "main": "lib/async-fetch-client.js",
   "scripts": {
