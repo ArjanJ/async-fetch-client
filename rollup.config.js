@@ -1,6 +1,6 @@
-const babel = require('rollup-plugin-babel');
+const { babel } = require('@rollup/plugin-babel');
 
-export default [
+module.exports = [
   {
     input: 'src/index',
     output: {
@@ -16,7 +16,7 @@ export default [
           ['@babel/transform-runtime'],
         ],
         presets: ['@babel/env', '@babel/flow'],
-        runtimeHelpers: true
+        babelHelpers: 'runtime'
       }),
     ],
   },
